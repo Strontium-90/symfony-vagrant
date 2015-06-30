@@ -2,47 +2,53 @@ StrontiumPjaxBundle
 ===================
 Helpers for improve [Symfony 2](https://github.com/symfony/symfony) perfomance when working under Vagrant enviroment.
 
+Using Symfony2 inside Vagrant can be slow due to synchronisation delay incurred by NFS. To avoid this, both locations have been moved to a shared memory segment under ``/dev/shm/%your_app_name%``.
+
+To view the application logs, run the following commands:
+
+```bash
+$ tail -f /dev/shm/%your_app_name%/logs/prod.log
+$ tail -f /dev/shm/%your_app_name%/logs/dev.log
+```
+
+
 Installation
 ------------
+Add to `composer.json`:
 
 ``` json
 {
     "require": {
-        "components/jquery-pjax": "*"
+        "strontium/symfony-vagrant": "*"
     }
 }
 ```
 
-To start using the bundle, register it in your Kernel:
+Usage
+------------
+Extend yor Kernel from VagrantAwareKernel:
 
 ``` php
 <?php
 // app/AppKernel.php
 
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new Strontium\PjaxBundle\StrontiumPjaxBundle(),
-    );
-    // ...
-}
+use Strontium\SymfonyVagrant\Kernel\VagrantAwareKernel;
+
+class AppKernel extends VagrantAwareKernel
+
 ```
+
+If you using PHPStromr and want to have copy of Symfony cache in your host machine, add next scripts to `composer.json`:
+
+``` json
+    "scripts": {
+        "post-install-cmd": [
+            ...
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-update-cmd": [
+            ...
+            "Application\\Optile\\CoreBundle\\Composer\\ScriptHandler::asseticDump"
+        ]
  
-Documentation
--------------
-
-
-
-Live Show
----------
-
-
-
-
-
-
-License
--------
-
-This bundle is under the MIT license.
+```
