@@ -4,7 +4,8 @@
     "description": "Helpers for improve Symfony perfomance when working under Vagrant enviroment ",
     "keywords": [
         "Vagrant",
-        "Symfony"
+        "Symfony",
+        "PHPStorm"
     ],
     "license": "MIT",
     "authors": [
@@ -30,7 +31,7 @@
     "scripts": {},
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.1-dev"
         }
     }
 }
