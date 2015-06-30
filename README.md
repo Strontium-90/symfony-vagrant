@@ -50,5 +50,5 @@ If you using PHPStromr and want to have copy of Symfony cache in your host machi
             ...
             "Application\\Optile\\CoreBundle\\Composer\\ScriptHandler::asseticDump"
         ]
- 
+    }
 ```
