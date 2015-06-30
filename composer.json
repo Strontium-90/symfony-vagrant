@@ -1,0 +1,36 @@
+{
+    "name": "strontium/symfony-vagrant",
+    "type": "symfony",
+    "description": "Helpers for improve Symfony perfomance when working under Vagrant enviroment ",
+    "keywords": [
+        "Vagrant",
+        "Symfony"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksey Bannov",
+            "email": "a.s.bannov@gmail.com",
+            "homepage": "https://github.com/Strontium-90"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Strontium\\SymfonyVagrant\\": ""
+        }
+    },
+    "require": {
+        "php": ">=5.4",
+        "symfony/framework-bundle": "~2.3"
+    },
+    "require-dev": {
+        "composer/composer": "~1.0@dev"
+    },
+    "suggest": {},
+    "scripts": {},
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2-dev"
+        }
+    }
+}
