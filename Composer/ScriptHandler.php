@@ -20,7 +20,10 @@ class ScriptHandler extends BaseHandler
             return;
         }
         require_once $consoleDir.'/AppKernel.php';
-        if (!\AppKernel::isVagrantEnvironment()) {
+
+        if (!in_array('Strontium\SymfonyVagrant\Kernel\VagrantAwareKernelInterface', class_implements('AppKernel'))
+            || !\AppKernel::isVagrantEnvironment()
+        ) {
             return;
         }
 

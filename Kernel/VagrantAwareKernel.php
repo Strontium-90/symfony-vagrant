@@ -3,8 +3,16 @@ namespace Strontium\SymfonyVagrant\Kernel;
 
 use Symfony\Component\HttpKernel\Kernel;
 
-abstract class VagrantAwareKernel extends Kernel
+abstract class VagrantAwareKernel extends Kernel implements VagrantAwareKernelInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public static function isVagrantEnvironment()
+    {
+        return (getenv('HOME') === '/home/vagrant' || getenv('VAGRANT') === 'VAGRANT') && is_dir('/dev/shm');
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -27,13 +35,5 @@ abstract class VagrantAwareKernel extends Kernel
         }
 
         return parent::getLogDir();
-    }
-
-    /**
-     * @return boolean
-     */
-    protected function isVagrantEnvironment()
-    {
-        return (getenv('HOME') === '/home/vagrant' || getenv('VAGRANT') === 'VAGRANT') && is_dir('/dev/shm');
     }
 }
