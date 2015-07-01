@@ -44,11 +44,12 @@ If you using PHPStromr and want to have copy of Symfony cache in your host machi
     "scripts": {
         "post-install-cmd": [
             ...
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+            "Strontium\\SymfonyVagrant\\Composer\\ScriptHandler::cacheWarmupOnVagrant"
         ],
         "post-update-cmd": [
             ...
-            "Application\\Optile\\CoreBundle\\Composer\\ScriptHandler::asseticDump"
+            "Strontium\\SymfonyVagrant\\Composer\\ScriptHandler::cacheWarmupOnVagrant"
         ]
     }
 ```
+SYMFONY_ASSETS_INSTALL=""
