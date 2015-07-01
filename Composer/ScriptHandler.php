@@ -1,6 +1,7 @@
 <?php
 namespace Strontium\SymfonyVagrant\Composer;
 
+use Composer\Script\CommandEvent;
 use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler as BaseHandler;
 
 class ScriptHandler extends BaseHandler
