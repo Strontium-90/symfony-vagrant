@@ -15,7 +15,8 @@ class ScriptHandler extends BaseHandler
     public static function cacheWarmupOnVagrant(CommandEvent $event)
     {
         $options = self::getOptions($event);
-        $consoleDir = self::getConsoleDir($event, 'clear the cache');
+        $appDir = $options['symfony-app-dir'];
+        $consoleDir = $appDir.'/console';
 
         if (null === $consoleDir) {
             return;
