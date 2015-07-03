@@ -16,12 +16,11 @@ class ScriptHandler extends BaseHandler
     {
         $options = self::getOptions($event);
         $appDir = $options['symfony-app-dir'];
-        $consoleDir = $appDir.'/console';
 
-        if (null === $consoleDir) {
+        if (null === $appDir) {
             return;
         }
-        require_once $consoleDir.'/AppKernel.php';
+        require_once $appDir.'/AppKernel.php';
 
         if (!in_array('Strontium\SymfonyVagrant\Kernel\VagrantAwareKernelInterface', class_implements('AppKernel'))
             || !\AppKernel::isVagrantEnvironment()
@@ -35,7 +34,7 @@ class ScriptHandler extends BaseHandler
         putenv('HOME=/home/notvagrant');
 
         $event->getIO()->write("Warming up cache on Vagrant machine in synced with host machine folder");
-        static::executeCommand($event, $consoleDir, 'cache:warmup --env=dev', $options['process-timeout']);
+        static::executeCommand($event, $appDir, 'cache:warmup --env=dev', $options['process-timeout']);
 
         putenv('VAGRANT='.$oldVagrant);
         putenv('HOME='.$oldHome);
