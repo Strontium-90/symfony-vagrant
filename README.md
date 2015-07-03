@@ -52,4 +52,3 @@ If you using PHPStromr and want to have copy of Symfony cache in your host machi
         ]
     }
 ```
-SYMFONY_ASSETS_INSTALL=""
