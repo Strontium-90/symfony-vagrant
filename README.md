@@ -1,6 +1,6 @@
 StrontiumPjaxBundle
 ===================
-Helpers for improve [Symfony 2](https://github.com/symfony/symfony) perfomance when working under Vagrant enviroment.
+Helpers for improve [Symfony 2](https://github.com/symfony/symfony) performance when working under Vagrant environment.
 
 Using Symfony2 inside Vagrant can be slow due to synchronisation delay incurred by NFS. To avoid this, both locations have been moved to a shared memory segment under ``/dev/shm/%your_app_name%``.
 
@@ -10,7 +10,6 @@ To view the application logs, run the following commands:
 $ tail -f /dev/shm/%your_app_name%/logs/prod.log
 $ tail -f /dev/shm/%your_app_name%/logs/dev.log
 ```
-
 
 Installation
 ------------
@@ -38,7 +37,7 @@ class AppKernel extends VagrantAwareKernel
 
 ```
 
-If you using PHPStromr and want to have copy of Symfony cache in your host machine, add next scripts to `composer.json`:
+If you using PHPStrorm and want to have copy of Symfony cache in your host machine, add next scripts to `composer.json`:
 
 ``` json
     "scripts": {
