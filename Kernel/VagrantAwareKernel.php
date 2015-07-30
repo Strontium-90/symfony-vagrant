@@ -18,7 +18,7 @@ abstract class VagrantAwareKernel extends Kernel implements VagrantAwareKernelIn
      */
     public function getCacheDir()
     {
-        if ($this->isVagrantEnvironment()) {
+        if (self::isVagrantEnvironment()) {
             return sprintf('/dev/shm/%s/cache/%s', $this->getName(), $this->environment);
         }
 
@@ -30,7 +30,7 @@ abstract class VagrantAwareKernel extends Kernel implements VagrantAwareKernelIn
      */
     public function getLogDir()
     {
-        if ($this->isVagrantEnvironment()) {
+        if (self::isVagrantEnvironment()) {
             return sprintf('/dev/shm/%s/logs', $this->getName());
         }
 
