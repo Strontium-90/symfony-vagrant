@@ -1,24 +1,18 @@
 <?php
 namespace Strontium\SymfonyVagrant\Kernel;
 
+use Strontium\SymfonyVagrant\VagrantHelper;
 use Symfony\Component\HttpKernel\Kernel;
 
-abstract class VagrantAwareKernel extends Kernel implements VagrantAwareKernelInterface
+abstract class VagrantAwareKernel extends Kernel
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function isVagrantEnvironment()
-    {
-        return (getenv('HOME') === '/home/vagrant' || getenv('VAGRANT') === 'VAGRANT') && is_dir('/dev/shm');
-    }
 
     /**
      * {@inheritdoc}
      */
     public function getCacheDir()
     {
-        if (self::isVagrantEnvironment()) {
+        if (VagrantHelper::isVagrantEnvironment()) {
             return sprintf('/dev/shm/%s/cache/%s', $this->getName(), $this->environment);
         }
 
@@ -30,7 +24,7 @@ abstract class VagrantAwareKernel extends Kernel implements VagrantAwareKernelIn
      */
     public function getLogDir()
     {
-        if (self::isVagrantEnvironment()) {
+        if (VagrantHelper::isVagrantEnvironment()) {
             return sprintf('/dev/shm/%s/logs', $this->getName());
         }
 
