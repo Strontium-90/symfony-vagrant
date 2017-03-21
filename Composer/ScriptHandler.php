@@ -16,7 +16,7 @@ class ScriptHandler extends BaseHandler
     public static function cacheWarmupOnVagrant(CommandEvent $event)
     {
         $options = self::getOptions($event);
-        $appDir = $options['symfony-app-dir'];
+        $appDir = $options['symfony-bin-dir'];
 
         if (null === $appDir) {
             return;
