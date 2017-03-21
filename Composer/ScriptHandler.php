@@ -3,6 +3,7 @@ namespace Strontium\SymfonyVagrant\Composer;
 
 use Composer\Script\CommandEvent;
 use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler as BaseHandler;
+use Strontium\SymfonyVagrant\VagrantHelper;
 
 class ScriptHandler extends BaseHandler
 {
@@ -23,7 +24,7 @@ class ScriptHandler extends BaseHandler
         require_once $appDir.'/AppKernel.php';
 
         if (!in_array('Strontium\SymfonyVagrant\Kernel\VagrantAwareKernelInterface', class_implements('AppKernel'))
-            || !\AppKernel::isVagrantEnvironment()
+            || !VagrantHelper::isVagrantEnvironment()
         ) {
             return;
         }
